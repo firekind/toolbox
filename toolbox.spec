@@ -1,4 +1,4 @@
-Name:           toolbox
+Name:           toolbox-tweaked
 Version:        0.0.99.5
 Release:        1%{?dist}
 Summary:        A tweaked toolbox binary

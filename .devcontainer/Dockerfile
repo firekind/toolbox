@@ -22,4 +22,4 @@ USER $USERNAME
 
 RUN go install github.com/cpuguy83/go-md2man@latest
 
-ENV PATH=$PATH:~/go/bin
+ENV PATH=$PATH:/home/$USERNAME/go/bin

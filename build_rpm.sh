@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-NAME=toolbox
+NAME=toolbox-tweaked
 VERSION=0.0.99.5
 PROJDIR=$PWD
 TARGETDIR=$PWD/target
