@@ -309,7 +309,7 @@ func createContainer(container, image, release, authFile string, showCommandToEn
 	}
 
 	logrus.Debugf("%s canonicalized to %s", currentUser.HomeDir, homeDirEvaled)
-	homeDirMountArg := homeDirEvaled + ":" + homeDirEvaled + ":rslave"
+	homeDirMountArg := homeDirEvaled + ":" + homeDirEvaled + ":rslave,ro"
 
 	var avahiSocketMount []string
 
@@ -415,7 +415,7 @@ func createContainer(container, image, release, authFile string, showCommandToEn
 		"toolbox", "--log-level", "debug",
 		"init-container",
 		"--gid", currentUser.Gid,
-		"--home", currentUser.HomeDir,
+		"--home", filepath.Join(filepath.Dir(homeDirEvaled), "toolbox"),
 		"--shell", userShell,
 		"--uid", currentUser.Uid,
 		"--user", currentUser.Username,

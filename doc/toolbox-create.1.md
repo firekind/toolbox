@@ -73,6 +73,9 @@ inside the container to provide seamless integration with the host. This
 includes `/run/libvirt`, `/run/systemd/journal`, `/run/udev/data`,
 `/var/lib/libvirt`, `/var/lib/systemd/coredump`, `/var/log/journal` and others.
 
+The home directory of the host is mounted in read only mode, and the home 
+directory of the user in the toolbox is `/home/toolbox`
+
 On some host operating systems, important paths like `/home`, `/media` or
 `/mnt` are symbolic links to other locations. The entry point ensures that
 paths inside the container match those on the host, to avoid needless

@@ -22,6 +22,8 @@ eval $(
           echo VARIANT_ID="$VARIANT_ID"
       )
 
+USER_ID=$(id -u)
+GROUP_ID=$(id -g)
 if [ -f /run/ostree-booted ] \
    && ! [ -f "$host_welcome_stub" ] \
    && [ "${ID}" = "fedora" ] \
@@ -42,6 +44,10 @@ if [ -f /run/ostree-booted ] \
     printf ".\n"
     echo ""
 
+    if [ ! -f $HOME ]; then
+        sudo mkdir $HOME
+        sudo chown -R $USER_ID:$GROUP_ID $HOME
+    fi
     mkdir -p "$toolbox_config"
     touch "$host_welcome_stub"
 fi
@@ -71,6 +77,10 @@ if [ -f /run/.containerenv ] \
 
         echo ""
 
+        if [ ! -f $HOME ]; then
+            sudo mkdir $HOME
+            sudo chown -R $USER_ID:$GROUP_ID $HOME
+        fi
         mkdir -p "$toolbox_config"
         touch "$toolbox_welcome_stub"
     fi
@@ -107,3 +117,5 @@ unset VARIANT_ID
 unset toolbox_config
 unset host_welcome_stub
 unset toolbox_welcome_stub
+unset USER_ID
+unset GROUP_ID
